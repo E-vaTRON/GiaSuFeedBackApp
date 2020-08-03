@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:data="clr-namespace:GiaSuFeedBack" 
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#3C4564"
+             x:Class="GiaSuFeedBack.MainPage">
+
+    <Grid VerticalOptions="FillAndExpand" CompressedLayout.IsHeadless="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Frame x:Name="TopBigFrame" Grid.Row="0" CornerRadius="20" Margin="0,-20,0,0" Padding="0">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="Image2.jpg" Grid.RowSpan="3" HeightRequest="80" HorizontalOptions="FillAndExpand" Aspect="AspectFill" Margin="0"/>
+                    <Grid Grid.Row="0" Margin="5,30,5,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton x:Name="FilterButton"  Grid.Column="0" Source="Filter.png" BackgroundColor="Transparent" Padding="5"
+                                 WidthRequest="40" HeightRequest="40" CornerRadius="10" HorizontalOptions="Start"/>
+                        <Label Grid.Column="1" Text="Feed Back" FontAttributes="Bold" TextColor="#E3E6E9" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+                        <ImageButton Grid.Column="2" Source="Logout.png" BackgroundColor="Transparent" Padding="5"  
+                                 WidthRequest="40" HeightRequest="40" CornerRadius="10" HorizontalOptions="End"/>
+                    </Grid>
+                    <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                        <Label Text="Total Bug" FontSize="30" TextColor="#E3E6E9"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,50">
+                        <Label Text="Total Fixed" FontSize="20" TextColor="#E3E6E9"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+        <ImageButton x:Name="ActiveButton" Grid.Row="1" Source="ChangeButton.png" 
+                     HeightRequest="50" BackgroundColor="Transparent" WidthRequest="50" Margin="0,-30,50,0" HorizontalOptions="End" 
+                     CornerRadius="25"  
+                     Clicked="ActiveButton_Clicked"/>
+        <Slider Margin="20" Maximum="1000" Minimum="0" ValueChanged="Slider_ValueChanged" VerticalOptions="End" Value="0"/>
+
+
+
+        <StackLayout x:Name="Header" Grid.Row="2" Orientation="Vertical" HorizontalOptions="Start"  Margin="60,-25,0,0">
+            <Label Text="Windows" TextColor="#E3E6E9" FontSize="15"/>
+            <Label Text="IOS" TextColor="#E3E6E9" FontSize="15"/>
+            <Label Text="Androd" TextColor="#E3E6E9" FontSize="15"/>
+        </StackLayout>
+
+        <ListView x:Name="FeedbackList" Grid.Row="3" HorizontalOptions="FillAndExpand" RowHeight="100" BackgroundColor="#3C4564" 
+                  ItemTapped="FeedbackList_ItemTapped"
+                  VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="data:FeedBack">
+                    <ViewCell>
+                        <Frame BorderColor="#697597" Margin="10" HasShadow="True" BackgroundColor="#697597" CornerRadius="10" Padding="0">
+                           <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Source="Windows.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60"/>
+                                    <BoxView Grid.Column="1" WidthRequest="1" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Color="#E3E6E9"/>
+                                    <Label Grid.Column="2" Text="{x:Binding userName, Mode=OneWay}" 
+                                           FontAttributes="Bold" FontSize="15"
+                                           TextColor="#E3E6E9" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <Label Grid.Column="3" Text="{x:Binding title, Mode=OneWay}"
+                                           FontSize="15"
+                                           TextColor="#E3E6E9" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!--    <Label Text="{x:Binding detail, Mode=OneWay}" TextColor="#E3E6E9" HeightRequest="40"/> -->
+
+                      </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <Label Grid.Row="4" FontAttributes="Bold" FontSize="20" Text="TO TECHS" TextColor="#E3E6E9" HorizontalTextAlignment="Center"
+               HeightRequest="60" BackgroundColor="#3D476A" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
+    </Grid>
+
+</ContentPage>
+    
