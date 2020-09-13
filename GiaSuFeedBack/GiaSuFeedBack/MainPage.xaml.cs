@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Extended;
 
 namespace GiaSuFeedBack
 {
@@ -47,19 +48,6 @@ namespace GiaSuFeedBack
             FeedbackList.SelectedItem = null;
         }
 
-        float start = 400;
-        float end = 0;
-
-        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            start = (float)e.NewValue;
-            end = (float)e.NewValue;
-            TopBigFrame.TranslationY = e.NewValue;
-            FeedbackList.TranslationY = e.NewValue;
-            Header.TranslationY = e.NewValue;
-            ActiveButton.TranslationY = e.NewValue;
-        }
-
         private async void ActiveButton_Clicked(object sender, EventArgs e)
         {
             uint timeout = 500;
@@ -68,7 +56,6 @@ namespace GiaSuFeedBack
             await ActiveButton.RelRotateTo(360);
             await ActiveButton.TranslateTo(0, 0, timeout, Easing.SpringOut);
         }
-
 
     }
 }

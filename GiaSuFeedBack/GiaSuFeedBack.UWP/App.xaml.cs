@@ -29,6 +29,7 @@ namespace GiaSuFeedBack.UWP
         public App()
         {
             this.InitializeComponent();
+
             this.Suspending += OnSuspending;
         }
 

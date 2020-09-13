@@ -22,6 +22,7 @@ namespace GiaSuFeedBack.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            global::Xamarin.Forms.Forms.SetFlags(new string[] { "CollectionView_Experimental", "Expander_Experimental" });
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

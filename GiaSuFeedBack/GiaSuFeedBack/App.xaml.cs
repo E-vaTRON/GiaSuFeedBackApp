@@ -9,7 +9,8 @@ namespace GiaSuFeedBack
         public App()
         {
             InitializeComponent();
-            Device.SetFlags(new string[] { "MediaElement_Experimental" });
+            Device.SetFlags(new string[] { "MediaElement_Experimental", "Expander_Experimental" });
+
             MainPage = new NavigationPage(new MainPage());
         }
 
